@@ -1,10 +1,10 @@
-import { CppRenderer } from "../CppRenderer";
+import { CppRenderer } from '../CppRenderer';
 import {
   ConstrainedEnumModel,
   ConstrainedEnumValueModel,
-} from "../../../models";
-import { EnumPresetType } from "../CppPreset";
-import { CppOptions } from "../CppGenerator";
+} from '../../../models';
+import { EnumPresetType } from '../CppPreset';
+import { CppOptions } from '../CppGenerator';
 
 /**
  * Renderer for Template's `enum` type
@@ -31,25 +31,25 @@ ${this.indent(this.renderBlock(content, 2))}
       items.push(renderedItem);
     }
 
-    const content = items.join(", ");
+    const content = items.join(', ');
     return `${content};`;
   }
 
   runItemPreset(item: ConstrainedEnumValueModel): Promise<string> {
-    return this.runPreset("item", { item });
+    return this.runPreset('item', { item });
   }
 }
 
-export const CPP_DEFAULT_ENUM_PRESET: EnumPresetType<CppTemplateOptions> = {
+export const CPP_DEFAULT_ENUM_PRESET: EnumPresetType<CppOptions> = {
   self({ renderer }) {
-    renderer.addDependency("import com.fasterxml.jackson.annotation.*;");
+    renderer.addDependency('import com.fasterxml.jackson.annotation.*;');
     return renderer.defaultSelf();
   },
   item({ item }) {
     return `${item.key}(${item.value})`;
   },
   additionalContent({ model }) {
-    const enumValueType = "Object";
+    const enumValueType = 'Object';
 
     return `private ${enumValueType} value;
 

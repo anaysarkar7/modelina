@@ -9,4 +9,4 @@ export * from './python';
 export * from './go';
 export * from './rust';
 export * from './AbstractFileGenerator';
-export * from './Cpp';
+export * from './cpp';

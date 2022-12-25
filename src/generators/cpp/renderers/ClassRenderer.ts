@@ -1,17 +1,17 @@
-import { CppRenderer } from "../CppRenderer";
+import { CppRenderer } from '../CppRenderer';
 import {
   ConstrainedDictionaryModel,
   ConstrainedObjectModel,
   ConstrainedObjectPropertyModel,
-} from "../../../models";
-import { FormatHelpers } from "../../../helpers";
-import { TemplateOptions } from "../CppGenerator";
-import { ClassPresetType } from "../CppPreset";
+} from '../../../models';
+import { FormatHelpers } from '../../../helpers';
+import { CppOptions } from '../CppGenerator';
+import { ClassPresetType } from '../CppPreset';
 
 /**
  * Renderer for Template's `class` type
  *
- * @extends CppRenderer
+ * @extends AbstractRenderer
  */
 export class ClassRenderer extends CppRenderer<ConstrainedObjectModel> {
   async defaultSelf(): Promise<string> {
@@ -28,7 +28,7 @@ ${this.indent(this.renderBlock(content, 2))}
   }
 
   runCtorPreset(): Promise<string> {
-    return this.runPreset("ctor");
+    return this.runPreset('ctor');
   }
 
   /**
@@ -47,7 +47,7 @@ ${this.indent(this.renderBlock(content, 2))}
   }
 
   runPropertyPreset(property: ConstrainedObjectPropertyModel): Promise<string> {
-    return this.runPreset("property", { property });
+    return this.runPreset('property', { property });
   }
 
   /**
@@ -67,15 +67,15 @@ ${this.indent(this.renderBlock(content, 2))}
   }
 
   runGetterPreset(property: ConstrainedObjectPropertyModel): Promise<string> {
-    return this.runPreset("getter", { property });
+    return this.runPreset('getter', { property });
   }
 
   runSetterPreset(property: ConstrainedObjectPropertyModel): Promise<string> {
-    return this.runPreset("setter", { property });
+    return this.runPreset('setter', { property });
   }
 }
 
-export const CPP_DEFAULT_CLASS_PRESET: CppClassPresetType<CppOptions> = {
+export const CPP_DEFAULT_CLASS_PRESET: ClassPresetType<CppOptions> = {
   self({ renderer }) {
     return renderer.defaultSelf();
   },

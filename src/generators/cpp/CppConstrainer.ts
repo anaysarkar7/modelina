@@ -1,11 +1,11 @@
-import { TypeMapping } from "../../helpers";
+import { TypeMapping } from '../../helpers';
 import {
   defaultEnumKeyConstraints,
   defaultEnumValueConstraints,
-} from "./constrainer/EnumConstrainer";
-import { defaultModelNameConstraints } from "./constrainer/ModelNameConstrainer";
-import { defaultPropertyKeyConstraints } from "./constrainer/PropertyKeyConstrainer";
-import { CppOptions } from "./CppGenerator";
+} from './constrainer/EnumConstrainer';
+import { defaultModelNameConstraints } from './constrainer/ModelNameConstrainer';
+import { defaultPropertyKeyConstraints } from './constrainer/PropertyKeyConstrainer';
+import { CppOptions } from './CppGenerator';
 
 export const CppDefaultTypeMapping: TypeMapping<CppOptions> = {
   Object({ constrainedModel }): string {
@@ -16,35 +16,35 @@ export const CppDefaultTypeMapping: TypeMapping<CppOptions> = {
     return constrainedModel.name;
   },
   Any(): string {
-    return "";
+    return '';
   },
   Float(): string {
-    return "";
+    return '';
   },
   Integer(): string {
-    return "";
+    return '';
   },
   String(): string {
-    return "";
+    return '';
   },
   Boolean(): string {
-    return "";
+    return '';
   },
   Tuple(): string {
-    return "";
+    return '';
   },
   Array(): string {
-    return "";
+    return '';
   },
   Enum({ constrainedModel }): string {
     //Returning name here because all enum models have been split out
     return constrainedModel.name;
   },
   Union(): string {
-    return "";
+    return '';
   },
   Dictionary(): string {
-    return "";
+    return '';
   },
 };
 

@@ -1,6 +1,6 @@
-import { AbstractRenderer } from "../AbstractRenderer";
-import { CppGenerator, CppOptions } from "./CppGenerator";
-import { ConstrainedMetaModel, InputMetaModel, Preset } from "../../models";
+import { AbstractRenderer } from '../AbstractRenderer';
+import { CppGenerator, CppOptions } from './CppGenerator';
+import { ConstrainedMetaModel, InputMetaModel, Preset } from '../../models';
 
 /**
  * Common renderer for Template

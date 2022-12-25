@@ -1,12 +1,12 @@
-import { ConstrainedObjectModel, ObjectModel } from "../../../models";
+import { ConstrainedObjectModel, ObjectModel } from '../../../models';
 import {
   NO_NUMBER_START_CHAR,
   NO_DUPLICATE_PROPERTIES,
   NO_EMPTY_VALUE,
   NO_RESERVED_KEYWORDS,
-} from "../../../helpers/Constraints";
-import { FormatHelpers, PropertyKeyConstraint } from "../../../helpers";
-import { isReservedCppKeyword } from "../Constants";
+} from '../../../helpers/Constraints';
+import { FormatHelpers, PropertyKeyConstraint } from '../../../helpers';
+import { isReservedCppKeyword } from '../Constants';
 
 export type PropertyKeyConstraintOptions = {
   NO_SPECIAL_CHAR: (value: string) => string;
@@ -27,8 +27,8 @@ export const DefaultPropertyKeyConstraints: PropertyKeyConstraintOptions = {
     //Exclude ` ` because it gets formatted by NAMING_FORMATTER
     //Exclude '_' because they are allowed
     return FormatHelpers.replaceSpecialCharacters(value, {
-      exclude: [" ", "_"],
-      separator: "_",
+      exclude: [' ', '_'],
+      separator: '_',
     });
   },
   NO_NUMBER_START_CHAR,

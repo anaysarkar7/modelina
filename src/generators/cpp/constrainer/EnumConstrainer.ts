@@ -1,17 +1,17 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { ConstrainedEnumModel, EnumModel } from "../../../models";
+import { ConstrainedEnumModel, EnumModel } from '../../../models';
 import {
   NO_NUMBER_START_CHAR,
   NO_DUPLICATE_ENUM_KEYS,
   NO_EMPTY_VALUE,
   NO_RESERVED_KEYWORDS,
-} from "../../../helpers/Constraints";
+} from '../../../helpers/Constraints';
 import {
   FormatHelpers,
   EnumKeyConstraint,
   EnumValueConstraint,
-} from "../../../helpers";
-import { isReservedCppKeyword } from "../Constants";
+} from '../../../helpers';
+import { isReservedCppKeyword } from '../Constants';
 
 export type ModelEnumKeyConstraints = {
   NO_SPECIAL_CHAR: (value: string) => string;
@@ -32,8 +32,8 @@ export const DefaultEnumKeyConstraints: ModelEnumKeyConstraints = {
     //Exclude ` ` because it gets formatted by NAMING_FORMATTER
     //Exclude '_' because they are allowed as enum keys
     return FormatHelpers.replaceSpecialCharacters(value, {
-      exclude: [" ", "_"],
-      separator: "_",
+      exclude: [' ', '_'],
+      separator: '_',
     });
   },
   NO_NUMBER_START_CHAR,
@@ -80,25 +80,25 @@ export function defaultEnumValueConstraints(): EnumValueConstraint {
   return ({ enumValue }) => {
     let constrainedEnumValue = enumValue;
     switch (typeof enumValue) {
-      case "string":
-      case "boolean":
-        constrainedEnumValue = `"${enumValue}"`;
-        break;
-      case "bigint":
-      case "number": {
-        constrainedEnumValue = enumValue;
-        break;
-      }
-      case "object": {
-        constrainedEnumValue = `"${JSON.stringify(enumValue).replace(
-          /"/g,
-          '\\"'
-        )}"`;
-        break;
-      }
-      default: {
-        constrainedEnumValue = `"${JSON.stringify(enumValue)}"`;
-      }
+    case 'string':
+    case 'boolean':
+      constrainedEnumValue = `"${enumValue}"`;
+      break;
+    case 'bigint':
+    case 'number': {
+      constrainedEnumValue = enumValue;
+      break;
+    }
+    case 'object': {
+      constrainedEnumValue = `"${JSON.stringify(enumValue).replace(
+        /"/g,
+        '\\"'
+      )}"`;
+      break;
+    }
+    default: {
+      constrainedEnumValue = `"${JSON.stringify(enumValue)}"`;
+    }
     }
     return constrainedEnumValue;
   };

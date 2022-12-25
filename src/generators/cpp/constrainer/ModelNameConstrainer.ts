@@ -2,9 +2,9 @@ import {
   NO_NUMBER_START_CHAR,
   NO_EMPTY_VALUE,
   NO_RESERVED_KEYWORDS,
-} from "../../../helpers/Constraints";
-import { FormatHelpers, ModelNameConstraint } from "../../../helpers";
-import { isReservedCppKeyword } from "../Constants";
+} from '../../../helpers/Constraints';
+import { FormatHelpers, ModelNameConstraint } from '../../../helpers';
+import { isReservedCppKeyword } from '../Constants';
 
 export type ModelNameConstraints = {
   NO_SPECIAL_CHAR: (value: string) => string;
@@ -19,8 +19,8 @@ export const DefaultModelNameConstraints: ModelNameConstraints = {
     //Exclude ` ` because it gets formatted by NAMING_FORMATTER
     //Exclude '_' because they are allowed
     return FormatHelpers.replaceSpecialCharacters(value, {
-      exclude: [" ", "_"],
-      separator: "_",
+      exclude: [' ', '_'],
+      separator: '_',
     });
   },
   NO_NUMBER_START_CHAR,

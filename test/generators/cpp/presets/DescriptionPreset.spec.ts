@@ -1,25 +1,25 @@
 import {
   CppGenerator,
-  TEMPLATE_DESCRIPTION_PRESET,
-} from "../../../../src/generators/template";
+  CPP_DESCRIPTION_PRESET,
+} from '../../../../src/generators/cpp';
 
-describe("TEMPLATE_DESCRIPTION_PRESET", () => {
+describe('TEMPLATE_DESCRIPTION_PRESET', () => {
   let generator: CppGenerator;
   beforeEach(() => {
-    generator = new CppGenerator({ presets: [TEMPLATE_DESCRIPTION_PRESET] });
+    generator = new CppGenerator({ presets: [CPP_DESCRIPTION_PRESET] });
   });
 
-  test("should render description and examples for class", async () => {
+  test('should render description and examples for class', async () => {
     const doc = {
-      $id: "Clazz",
-      type: "object",
-      description: "Description for class",
-      examples: [{ prop: "value" }],
+      $id: 'Clazz',
+      type: 'object',
+      description: 'Description for class',
+      examples: [{ prop: 'value' }],
       properties: {
         prop: {
-          type: "string",
-          description: "Description for prop",
-          examples: ["exampleValue"],
+          type: 'string',
+          description: 'Description for prop',
+          examples: ['exampleValue'],
         },
       },
     };
@@ -28,13 +28,13 @@ describe("TEMPLATE_DESCRIPTION_PRESET", () => {
     expect(models[0].result).toMatchSnapshot();
   });
 
-  test("should render description and examples for enum", async () => {
+  test('should render description and examples for enum', async () => {
     const doc = {
-      $id: "Enum",
-      type: "string",
-      description: "Description for enum",
-      examples: ["value"],
-      enum: ["on", "off"],
+      $id: 'Enum',
+      type: 'string',
+      description: 'Description for enum',
+      examples: ['value'],
+      enum: ['on', 'off'],
     };
 
     const models = await generator.generate(doc);
